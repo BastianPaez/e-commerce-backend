@@ -9,10 +9,12 @@ import com.desknet.repository.CategoryRepository;
 import com.desknet.repository.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class ProductServiceImpl implements ProductService{
 
     @Autowired
@@ -24,11 +26,13 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public void createProduct(ProductRequestDto dto) {
 
+
         Category category = categoryRepository.findById(dto.getCategoryId())
                 .orElseThrow(() -> new EntityNotFoundException("Category not found"));
 
         Product product = ProductMapper.toEntity(dto, category);
 
+        System.out.println(product.getDescription());
         productRepository.save(product);
     }
 

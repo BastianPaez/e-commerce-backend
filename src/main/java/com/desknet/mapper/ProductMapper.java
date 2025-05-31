@@ -20,6 +20,7 @@ public class ProductMapper {
         product.setStock(dto.getStock());
         product.setCategory(category);
 
+
         return product;
     }
 
@@ -28,6 +29,7 @@ public class ProductMapper {
         ProductResponseDto productDto = new ProductResponseDto();
         productDto.setId(product.getId());
         productDto.setName(product.getName());
+        productDto.setDescription(product.getDescription());
         productDto.setPrice(product.getPrice());
         productDto.setStock(product.getStock());
         productDto.setCategoryName(product.getCategory().getName());
